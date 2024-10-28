@@ -11,6 +11,7 @@ import {
   Strong,
   Dialog,
 } from "@radix-ui/themes";
+import Image from "next/image";
 import { useEffect, useState } from "react";
 
 export default function ProductList() {
@@ -44,7 +45,7 @@ export default function ProductList() {
         <Box maxWidth="100%" key={product.id}>
           <Card size="2">
             <Flex justify="center" align="center" width="auto" height="100%">
-              <img
+              <Image
                 src={product.images[0]}
                 alt={`Product image 0`}
                 style={{ width: "auto", height: "370px" }}
