@@ -25,6 +25,8 @@ const ImageSlider = ({ images }) => {
           src={images[currentIndex]}
           alt={`Product image ${currentIndex + 1}`}
           style={{ width: "100%", height: "auto" }}
+          width={1370}
+          height={1370}
         />
       </Box>
       <Button variant="soft" onClick={nextImage} size="1">
