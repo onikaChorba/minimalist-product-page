@@ -2,7 +2,7 @@ export default async function handler(req, res) {
   const { limit = 30 } = req.query;
 
   try {
-    const response = await fetch(`https://dummyjson.com/products`);
+    const response = await fetch("https://dummyjson.com/products");
     const data = await response.json();
 
     const fragranceProducts = data.products.filter(
