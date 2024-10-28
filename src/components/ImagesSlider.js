@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Button, Box } from "@radix-ui/themes";
 import * as Slider from "@radix-ui/react-slider";
-
+import Image from "next/image";
 const ImageSlider = ({ images }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -21,7 +21,7 @@ const ImageSlider = ({ images }) => {
         {"<"}
       </Button>
       <Box position="relative" width="auto" height="100%">
-        <img
+        <Image
           src={images[currentIndex]}
           alt={`Product image ${currentIndex + 1}`}
           style={{ width: "100%", height: "auto" }}

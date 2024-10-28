@@ -1,8 +1,6 @@
-// src/pages/index.js
 import React, { CSSProperties } from 'react';
 import Header from '../components/Header';
 import { Theme, Box } from "@radix-ui/themes";
-import ImageSlider from '../components/ImagesSlider';
 import ProductList from "../components/ProductList";
 
 const Home = () => (
