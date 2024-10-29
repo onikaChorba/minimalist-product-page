@@ -11,6 +11,7 @@ import {
   Select,
   Strong,
   Dialog,
+  Badge,
 } from "@radix-ui/themes";
 import { useEffect, useState } from "react";
 import { Product } from "@component/types";
@@ -45,6 +46,9 @@ export default function ProductList() {
       {products.map((product) => (
         <Box maxWidth="100%" key={product.id}>
           <Card size="2">
+            <Flex justify='end'>
+              {product.id <= 2 && <Badge color="red">New</Badge>}
+            </Flex>
             <Flex justify="center" align="center" width="auto" height="100%">
               <Image
                 src={product.images[0]}
