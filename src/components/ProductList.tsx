@@ -1,4 +1,3 @@
-import ImageSlider from "./ImagesSlider";
 import Image from "next/image";
 import {
   Box,
@@ -15,6 +14,7 @@ import {
 } from "@radix-ui/themes";
 import { useEffect, useState } from "react";
 import { Product } from "@component/types";
+import { DialogContent } from "./DialogContent";
 
 export default function ProductList() {
   const [products, setProducts] = useState<Product[]>([]);
@@ -53,9 +53,10 @@ export default function ProductList() {
               <Image
                 src={product.images[0]}
                 alt={`Product image 0`}
-                style={{ width: "auto", height: "370px" }}
+                style={{ width: 'auto', height: 'auto' }}
                 width={370}
                 height={370}
+                priority
               />
             </Flex>
             <Box>
@@ -94,60 +95,11 @@ export default function ProductList() {
               <Button color="gray" variant="surface" highContrast>
                 <Strong>Add to Cart</Strong>
               </Button>
-
               <Dialog.Root>
                 <Dialog.Trigger>
                   <Button variant="ghost">more info</Button>
                 </Dialog.Trigger>
-                <Dialog.Content size="4">
-                  <Flex gap="3" justify="end">
-                    <Dialog.Close>
-                      <Button variant="soft" color="gray">
-                        Close
-                      </Button>
-                    </Dialog.Close>
-                  </Flex>
-                  <Flex justify="between" align="center">
-                    <Box width="60%">
-                      <ImageSlider images={product.images} />
-                    </Box>
-                    <Box width="40%">
-                      <Box>
-                        <Heading size="3" as="h3">
-                          {product.title}
-                        </Heading>
-                        <Text as="div" size="2" color="gray" mb="2">
-                          Price: ${product.price}
-                        </Text>
-                      </Box>
-                      <Flex align="center" gap="2" justify="start">
-                        <Text as="div" size="2" color="gray">
-                          Size:
-                        </Text>
-                        <Select.Root defaultValue="standart">
-                          <Select.Trigger variant="classic" />
-                          <Select.Content>
-                            <Select.Group>
-                              <Select.Item value="standart">
-                                Standard
-                              </Select.Item>
-                              <Select.Item value="mini">Mini</Select.Item>
-                              <Select.Item value="medium" disabled>
-                                Medium
-                              </Select.Item>
-                            </Select.Group>
-                          </Select.Content>
-                        </Select.Root>
-                      </Flex>
-                      <Text as="div" size="2" mb="2">
-                        {product.description}
-                      </Text>
-                      <Button color="gray" variant="surface" highContrast>
-                        <Strong>Add to Cart</Strong>
-                      </Button>
-                    </Box>
-                  </Flex>
-                </Dialog.Content>
+                <DialogContent product={product} />
               </Dialog.Root>
             </Flex>
           </Card>

@@ -33,6 +33,7 @@ const ImageSlider: React.FC<IImageSlider> = ({ images }) => {
           style={{ width: "100%", height: "auto" }}
           width={1370}
           height={1370}
+          priority
         />
       </Box>
       <Button variant="soft" onClick={nextImage} size="1">
