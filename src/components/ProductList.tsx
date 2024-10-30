@@ -15,6 +15,7 @@ import {
 import { useEffect, useState } from "react";
 import { Product } from "@component/types";
 import { DialogContent } from "./DialogContent";
+import { SkeletonLoader } from "./SkeletonLoader";
 
 export default function ProductList() {
   const [products, setProducts] = useState<Product[]>([]);
@@ -25,7 +26,7 @@ export default function ProductList() {
         const response = await fetch("/api/products?limit=30");
         const data = await response.json();
         setProducts(data || []);
-        setLoading(false);
+        setTimeout(() => setLoading(false), 2000);
       } catch (error) {
         console.error("Failed to fetch products:", error);
       }
@@ -33,7 +34,7 @@ export default function ProductList() {
     fetchProducts();
   }, []);
 
-  if (loading) return <p>Loading products...</p>;
+  if (loading) return <SkeletonLoader />;
 
   return (
     <Grid
