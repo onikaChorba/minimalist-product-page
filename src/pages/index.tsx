@@ -3,14 +3,15 @@ import Header from '../components/Header';
 import { MagnifyingGlassIcon } from "@heroicons/react/24/solid";
 import { Theme, Box, TextField, Select, Flex } from "@radix-ui/themes";
 import ProductList from "../components/ProductList";
+import BannerCarousel from '@component/components/BannerCarousel';
 
 const Home = () => (
   <Theme>
     <Header />
     <main style={mainStyle}>
       <Box pt="5" maxWidth='1550px' width="100%">
-
-        <Flex justify='between' align="center" mb="5" gap='2'>
+        <BannerCarousel />
+        <Flex justify='between' align="center" mb="5" gap='2' pt='5'>
           <Box width='1550px'>
             <TextField.Root placeholder="Search the product…" size='3'>
               <TextField.Slot>
@@ -32,10 +33,7 @@ const Home = () => (
             </Select.Root>
           </Box>
         </Flex>
-
-        <Box>
-          <ProductList />
-        </Box>
+        <ProductList />
       </Box>
     </main>
   </Theme>
