@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
 import "@radix-ui/themes/styles.css";
 import { CSSProperties } from "react";
-import { Button, Heading, TabNav, Flex } from "@radix-ui/themes";
+import { Button, Heading, TabNav, Flex, Box } from "@radix-ui/themes";
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 import * as Collapsible from "@radix-ui/react-collapsible";
 import Link from "next/link";
 import { ShoppingCartIcon, XMarkIcon, Bars3Icon } from '@heroicons/react/24/outline';
+import AuthModal from "./AuthModal";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -55,16 +56,12 @@ const Header = () => {
               </TabNav.Link>
             </TabNav.Root>
             <Link href="/cart">
-              <div style={{ position: "relative", marginLeft: "10px" }}>
+              <Box position='relative' ml='2'>
                 <ShoppingCartIcon style={{ width: "28px", height: "28px", color: 'darkblue' }} color="indigo" />
                 <span style={cartCountStyle}>3</span>
-              </div>
+              </Box>
             </Link>
-            <Link href="/login">
-              <Button variant="outline" style={{ marginLeft: "10px" }}>
-                Login / Sign Up
-              </Button>
-            </Link>
+            <AuthModal />
           </div>
         )}
         {isMobile ? (
