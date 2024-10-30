@@ -5,6 +5,7 @@ import { Button, Heading, TabNav, Flex } from "@radix-ui/themes";
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 import * as Collapsible from "@radix-ui/react-collapsible";
 import Link from "next/link";
+import { ShoppingCartIcon, XMarkIcon, Bars3Icon } from '@heroicons/react/24/outline';
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -53,6 +54,17 @@ const Header = () => {
                 </DropdownMenu.Root>
               </TabNav.Link>
             </TabNav.Root>
+            <Link href="/cart">
+              <div style={{ position: "relative", marginLeft: "10px" }}>
+                <ShoppingCartIcon style={{ width: "28px", height: "28px", color: 'darkblue' }} color="indigo" />
+                <span style={cartCountStyle}>3</span>
+              </div>
+            </Link>
+            <Link href="/login">
+              <Button variant="outline" style={{ marginLeft: "10px" }}>
+                Login / Sign Up
+              </Button>
+            </Link>
           </div>
         )}
         {isMobile ? (
@@ -62,7 +74,7 @@ const Header = () => {
             style={mobileButtonStyle}
             aria-label="Toggle menu"
           >
-            {isOpen ? "x" : "☰"}
+            {isOpen ? <XMarkIcon style={{ width: "36px", height: "33px", color: 'black' }} /> : <Bars3Icon style={{ width: "36px", height: "33px", color: 'black' }} />}
           </Button>
         ) : null}
       </Flex>
@@ -142,6 +154,17 @@ const mobileNavStyle: CSSProperties = {
   flexDirection: "column",
   padding: "10px 0",
   gap: "10px",
+};
+
+const cartCountStyle: CSSProperties = {
+  position: "absolute",
+  top: "-5px",
+  right: "-10px",
+  backgroundColor: "red",
+  color: "white",
+  borderRadius: "50%",
+  padding: "1px 5px",
+  fontSize: "10px",
 };
 
 export default Header;
